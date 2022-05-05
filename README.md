@@ -20,9 +20,6 @@ type here
   
 ![Img 3]()   
   
-![Img 4]()  
-  
-
 ## Installation     
 `git clone git@github.com:Phillip48/Tech-Blog.git`  
 

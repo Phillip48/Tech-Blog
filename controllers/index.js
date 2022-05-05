@@ -5,6 +5,12 @@ const router = require("express").Router();
 // const homeRoutes =
 // const dashboardRoutes =
 
+
+// routes
+// routes
+// routes
+
+
 router.use("/", homeRoutes);
 // finish the other needed routes with router.use()
 
