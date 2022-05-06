@@ -9,7 +9,22 @@ const newFormHandler = async function(event) {
 
     });
   
-    document.location.replace('/dashboard');
+    if (title && body) {
+      // insert route in fetch
+      const response = await fetch(`/`, {
+        method: 'POST',
+        body: JSON.stringify({ title, body }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert('Failed to create project');
+      }
+    }
   };
   
   document
