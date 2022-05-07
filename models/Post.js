@@ -39,9 +39,9 @@ Post.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'gallery',
+        modelName: 'post',
     }
 );
 
-module.exports = Comment;
+module.exports = Post;
 

@@ -12,7 +12,7 @@ router.get("/", withAuth, async (req, res) => {
     }
 });
 
-router.get("/new", withAuth, (req, res) => {
+router.get("/new", withAuth, async (req, res) => {
     // for showing new posts to the user
     try {
         const homeData = await Post.findAll();
