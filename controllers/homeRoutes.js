@@ -15,23 +15,29 @@ router.get("/post/:id", async (req, res) => {
     // get a single post
     try {
         const homeData = await Post.findByPk(req.params.id, {
-          include: [{ model: Category}]
-          // include: [{ model: Tag, through: Category, as: 'category_tag' }]
+            include: [{ model: Comment }]
+            // include: [{ model: Tag, through: Category, as: 'category_tag' }]
         });
-    
+
         if (!homeData) {
-          res.status(404).json({ message: 'No comment found with this id!' });
-          return;
+            res.status(404).json({ message: 'No comment found with this id!' });
+            return;
         }
-    
+
         res.status(200).json(homeData);
-      } catch (err) {
+    } catch (err) {
         res.status(500).json(err);
-      }
+    }
 });
 
 router.get("/login", (req, res) => {
     // login
+    if (req.session.logged_in) {
+        res.redirect('/profile');
+        return;
+    }
+
+    res.render('login');
 });
 
 router.get("/signup", (req, res) => {
