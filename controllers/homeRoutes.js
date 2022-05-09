@@ -3,28 +3,17 @@ const { Post, Comment, User } = require("../models");
 
 router.get("/", async (req, res) => {
     // get all posts for the homepage
-    // try {
-    //     const homeData = await Post.findAll();
-    //     res.status(200).json(homeData);
-    // }
     try {
         // Get all projects and JOIN with user data
-        const homeData = await Project.findAll({
-          include: [
-            {
-              model: User,
-              attributes: ['name'],
-            },
-          ],
-        });
+        const homeData = await Post.findAll({});
     
         // Serialize data so the template can read it
-        const home = homeData.map((project) => project.get({ plain: true }));
+        const posts = homeData.map((post) => post.get({ plain: true }));
     
         // Pass serialized data and session flag into template
-        res.render('homepage', { 
-            home, 
-          logged_in: req.session.logged_in 
+        res.render('posts', { 
+            posts, 
+          // logged_in: req.session.logged_in 
         });
       } catch (err) {
         res.status(500).json(err);
