@@ -47,7 +47,7 @@ router.get("/post/:id", async (req, res) => {
 router.get("/login", (req, res) => {
     // login
     if (req.session.logged_in) {
-        res.redirect('/profile');
+        res.redirect('/dashboard');
         return;
     }
 
@@ -56,6 +56,10 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
     // signup
+    if (req.session.sign_up) {
+      res.redirect('/signup');
+      return;
+  }
 })
 
 module.exports = router;
